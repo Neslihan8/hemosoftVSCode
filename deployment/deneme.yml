@@ -11,7 +11,13 @@ trigger:
     
     steps:
     - task: NuGetToolInstaller@1
-    
+    - task: AzureRmWebAppDeployment@4
+      inputs:
+        ConnectionType: 'AzureRM'
+        azureSubscription: 'Hemosoft-Connection'
+        appType: 'webAppLinux'
+        WebAppName: 'hemosoft'
+        packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
     - task: NuGetCommand@2
       inputs:
         restoreSolution: '$(solution)'
