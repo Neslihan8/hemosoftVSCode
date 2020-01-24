@@ -8,7 +8,6 @@ WORKDIR /src
 COPY ["hemosoftVSCode.csproj", "./"]
 RUN dotnet restore "./hemosoftVSCode.csproj"
 COPY . .
-WORKDIR /app
 RUN dotnet build "hemosoftVSCode.csproj" -c Release -o /app/build
 
 FROM build AS publish
